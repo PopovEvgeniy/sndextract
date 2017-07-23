@@ -48,10 +48,10 @@ You can send me a letter to tuzik87@inbox.ru.
 
 Version history
 
-1.0 — 1.9.2.5 — Internal unstable build.
-1.9.2.6 — First stable version.
-1.9.2.7 — First public version.
-1.9.2.8 — Experimental build.
-1.9.2.9 — 2.2.3 - Stable branch bulds.
+1.0 â€” 1.9.2.5 â€” Internal unstable build.
+1.9.2.6 â€” First stable version.
+1.9.2.7 â€” First public version.
+1.9.2.8 â€” Experimental build.
+1.9.2.9 â€” 2.2.3 - Stable branch builds.
 2.2.4 - 2.3 - Small changes.
 2.3.1 - Source code was improved. Linux support has been added.
