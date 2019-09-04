@@ -2,7 +2,7 @@
 
                     Mugen sound extractor by Popov Evgeniy Alekseyevich
 
-                             Version 2.3.6
+                             Version 2.3.8
 
 
 System requirement
@@ -19,8 +19,9 @@ Exit codes
 0 - Operation successfully complete.
 1 - Can't open input file.
 2 - Can't create output file.
-3 - Can't allocate memory.
-4 - Invalid format.
+3 - Can't jump to target offset.
+4 - Can't allocate memory.
+5 - Invalid format.
 
 License
 
@@ -59,4 +60,4 @@ Version history
 2.3.1.0.1 – Documentation was updated.
 2.3.2 - 2.3.5 - Small changes.
 2.3.5.1 - Makefile was updated.
-2.3.6 - Small changes.
+2.3.6 - 2.3.8 - Small changes.

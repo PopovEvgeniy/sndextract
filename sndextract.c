@@ -20,6 +20,7 @@ char *get_string_memory(const size_t length);
 size_t get_extension_position(const char *source);
 char *get_short_name(const char *name);
 char *get_name(const unsigned long int index,const char *short_name,const char *extension);
+void check_signature(const char *signature);
 head read_head(FILE *file);
 subhead read_subhead(FILE *file);
 void extract(FILE *input,const char *name);
@@ -46,7 +47,7 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.3.6");
+ puts("Version 2.3.8");
  puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2019 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
 }
@@ -107,7 +108,13 @@ FILE *create_output_file(const char *name)
 
 void go_offset(FILE *file,const unsigned long int offset)
 {
- fseek(file,offset,SEEK_SET);
+ if (fseek(file,offset,SEEK_SET)!=0)
+ {
+  putchar('\n');
+  puts("Can't jump to target offset");
+  exit(3);
+ }
+
 }
 
 unsigned long int get_file_size(FILE *file)
@@ -165,7 +172,7 @@ char *get_string_memory(const size_t length)
  {
   putchar('\n');
   puts("Can't allocate memory");
-  exit(3);
+  exit(4);
  }
  return memory;
 }
@@ -205,16 +212,22 @@ char *get_name(const unsigned long int index,const char *short_name,const char *
  return name;
 }
 
+void check_signature(const char *signature)
+{
+ if (strncmp(signature,"ElecbyteSnd",12)!=0)
+ {
+  putchar('\n');
+  puts("Bad signature of a mugen sound pseudo-archive");
+  exit(5);
+ }
+
+}
+
 head read_head(FILE *file)
 {
  head snd_head;
  fread(&snd_head,sizeof(head),1,file);
- if (strncmp(snd_head.signature,"ElecbyteSnd",12)!=0)
- {
-  putchar('\n');
-  puts("Bad signature of a mugen sound pseudo-archive");
-  exit(4);
- }
+ check_signature(snd_head.signature);
  return snd_head;
 }
 
