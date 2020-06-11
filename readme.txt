@@ -2,7 +2,7 @@
 
                     Mugen sound extractor by Popov Evgeniy Alekseyevich
 
-                             Version 2.3.8
+                             Version 2.3.9
 
 
 System requirement
@@ -60,4 +60,4 @@ Version history
 2.3.1.0.1 – Documentation was updated.
 2.3.2 - 2.3.5 - Small changes.
 2.3.5.1 - Makefile was updated.
-2.3.6 - 2.3.8 - Small changes.
+2.3.6 - 2.3.9 - Small changes.

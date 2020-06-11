@@ -47,8 +47,8 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.3.8");
- puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2019 years");
+ puts("Version 2.3.9");
+ puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2020 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
 }
 
@@ -76,8 +76,8 @@ void show_progress(const unsigned long int start,const unsigned long int stop)
  progress=start+1;
  progress*=100;
  progress/=stop;
- printf("\r");
- printf("Amount of extracted files: %ld from %ld.Progress:%ld%%",start+1,stop,progress);
+ putchar('\r');
+ printf("Amount of extracted files: %lu from %lu.Progress:%lu%%",start+1,stop,progress);
 }
 
 FILE *open_input_file(const char *name)
@@ -208,7 +208,7 @@ char *get_name(const unsigned long int index,const char *short_name,const char *
  size_t length;
  length=strlen(short_name)+strlen(extension)+12;
  name=get_string_memory(length);
- sprintf(name,"%s%ld%s",short_name,index,extension);
+ sprintf(name,"%s%lu%s",short_name,index,extension);
  return name;
 }
 
