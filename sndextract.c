@@ -47,7 +47,7 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.3.9");
+ puts("Version 2.4");
  puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2020 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
 }
@@ -134,7 +134,7 @@ void data_dump(FILE *input,FILE *output,const size_t length)
  for (index=0;index<length;++index)
  {
   fread(&data,sizeof(unsigned char),1,input);
-  fwrite(&data,sizeof(unsigned char),1,input);
+  fwrite(&data,sizeof(unsigned char),1,output);
  }
 
 }
