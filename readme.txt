@@ -2,7 +2,7 @@
 
                     Mugen sound extractor by Popov Evgeniy Alekseyevich
 
-                             Version 2.4.0.1
+                             Version 2.4.0.2
 
 
 System requirement
@@ -11,7 +11,7 @@ System requirement
 
 Description and usage
 
-This program created for extract a sound from games that built on MUGEN game engine.
+This program let you extract a sound from games that built on MUGEN game engine.
 This program takes a target file name as command line argument. 
 
 Exit codes
@@ -31,7 +31,7 @@ Source code
 
 The program source code compiled under Open Watcom.
 But you can do it under any modern C compiler.
-Source code can be compiled for wide range operation systems, but you need to create makefile or build script by yourself.
+Source code can be compiled for wide range operating systems, but you need to create makefile or build script by yourself.
 I provide only two things: compiled binary file for Windows and makefile for Linux.
 
 Install and uninstall under Linux
@@ -62,4 +62,4 @@ Version history
 2.3.5.1 - Makefile updated.
 2.3.6 - 2.3.9 - Small changes.
 2.4 - Small bug fixed.
-2.4.0.1 - Makefile updated.
+2.4.0.1 - 2.4.0.2 - Makefile updated.
