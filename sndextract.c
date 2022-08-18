@@ -5,9 +5,7 @@
 #include "format.h"
 
 void show_intro();
-void command_line_help();
-void show_start_message();
-void show_end_message();
+void show_message(const char *message);
 void show_progress(const unsigned long int start,const unsigned long int stop);
 FILE *open_input_file(const char *name);
 FILE *create_output_file(const char *name);
@@ -32,13 +30,13 @@ int main(int argc, char *argv[])
  show_intro();
  if (argc<2)
  {
-  command_line_help();
+  show_message("You must give a target file name as command line argument!");
  }
  else
  {
-  show_start_message();
+  show_message("Extracting a sounds... Please wait");
   work(argv[1]);
-  show_end_message();
+  show_message("Work finish");
  }
  return 0;
 }
@@ -47,27 +45,15 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.4");
- puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2020 years");
+ puts("Version 2.5");
+ puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2022 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
 }
 
-void command_line_help()
+void show_message(const char *message)
 {
  putchar('\n');
- puts("You must give a target file name as command line argument!");
-}
-
-void show_start_message()
-{
- putchar('\n');
- puts("Extracting a sounds... Please wait");
-}
-
-void show_end_message()
-{
- putchar('\n');
- puts("Work finish");
+ puts(message);
 }
 
 void show_progress(const unsigned long int start,const unsigned long int stop)
