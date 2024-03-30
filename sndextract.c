@@ -45,8 +45,8 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.5.3");
- puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2023 years");
+ puts("Version 2.5.4");
+ puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2024 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
 }
 
@@ -71,7 +71,7 @@ FILE *open_input_file(const char *name)
  target=fopen(name,"rb");
  if (target==NULL)
  {
-  show_message("Can't open input file");
+  puts("Can't open input file");
   exit(1);
  }
  return target;
@@ -197,7 +197,7 @@ void check_signature(const char *signature)
 {
  if (strncmp(signature,"ElecbyteSnd",12)!=0)
  {
-  show_message("Bad signature of a mugen sound pseudo-archive");
+  puts("Bad signature of a mugen sound pseudo-archive");
   exit(5);
  }
 
