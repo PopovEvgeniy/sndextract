@@ -1,7 +1,4 @@
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "sndextract.h"
 #include "format.h"
 
 void show_intro();
@@ -45,7 +42,7 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.5.4");
+ puts("Version 2.5.5");
  puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2024 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
 }
