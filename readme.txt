@@ -2,7 +2,7 @@
 
                     Mugen sound extractor by Popov Evgeniy Alekseyevich
 
-                             Version 2.5.6.1
+                             Version 2.5.6.2
 
 
 System requirements
@@ -30,7 +30,7 @@ This program is distributed under GNU GENERAL PUBLIC LICENSE.
 Source code
 
 The code was compiled under Open Watcom.
-But you can do it under any modern C compiler.
+But you can do it with any modern C compiler.
 The source code can be compiled for a wide range of operating systems, but you need to create a makefile or a build script by yourself.
 I provide only two things: the binary file for Windows and the makefile for Linux.
 
@@ -56,15 +56,15 @@ Version history
 1.9.2.8: The experimental build.
 1.9.2.9-2.2.3: The stable branch.
 2.2.4-2.3: The small changes.
-2.3.1: The source code improved. Linux support has been added.
-2.3.1.0.1: Documentation updated.
+2.3.1: The source code has improved. Linux support has been added.
+2.3.1.0.1: The documentation has been updated.
 2.3.2-2.3.5: The small changes.
-2.3.5.1: The makefile updated.
-2.3.6-2.3.9: Small changes.
-2.4: A small bug is fixed.
-2.4.0.1-2.4.0.2: The makefile updated.
+2.3.5.1: The makefile has been updated.
+2.3.6-2.3.9: The small changes.
+2.4: A small bug has been fixed.
+2.4.0.1-2.4.0.2: The makefile has been updated.
 2.5-2.5.4: Small changes.
-2.5.5: Visual C++ support improved.
-2.5.5.1: Documentation updated.
+2.5.5: Visual C++ support has improved.
+2.5.5.1: The documentation has been updated.
 2.5.6: The small changes.
-2.5.6.1: Documentation updated.
+2.5.6.1-2.5.6.2: The documentation has been updated.
