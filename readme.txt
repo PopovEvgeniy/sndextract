@@ -2,12 +2,12 @@
 
                     Mugen sound extractor by Popov Evgeniy Alekseyevich
 
-                             Version 2.5.6.2
+                             Version 2.5.7
 
 
 System requirements
 
-68 kilobytes of free space on storage media.
+36 kilobytes of free space on storage media.
 
 Description and usage
 
@@ -29,7 +29,7 @@ This program is distributed under GNU GENERAL PUBLIC LICENSE.
 
 Source code
 
-The code was compiled under Open Watcom.
+The code was compiled under Tiny C Compiler.
 But you can do it with any modern C compiler.
 The source code can be compiled for a wide range of operating systems, but you need to create a makefile or a build script by yourself.
 I provide only two things: the binary file for Windows and the makefile for Linux.
@@ -68,3 +68,4 @@ Version history
 2.5.5.1: The documentation has been updated.
 2.5.6: The small changes.
 2.5.6.1-2.5.6.2: The documentation has been updated.
+2.5.7: The source code was recompiled under Tiny C Compiler.
