@@ -42,8 +42,8 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.5.7");
- puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2024 years");
+ puts("Version 2.5.9");
+ puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2025 years");
  puts("This program is distributed under GNU GENERAL PUBLIC LICENSE");
 }
 
@@ -246,14 +246,14 @@ void work(const char *file)
  snd_size=get_file_size(input);
  snd_head=read_head(input);
  go_offset(input,snd_head.first_offset);
- for (index=0;index<snd_head.nb_sound-1;++index)
+ for (index=0;index<snd_head.amount-1;++index)
  {
-  show_progress(index,snd_head.nb_sound);
+  show_progress(index,snd_head.amount);
   wave_name=get_name(index+1,short_name,".wav");
   extract(input,wave_name);
   free(wave_name);
  }
- show_progress(index,snd_head.nb_sound);
+ show_progress(index,snd_head.amount);
  wave_name=get_name(index+1,short_name,".wav");
  extract_last(input,wave_name,snd_size);
  free(wave_name);
