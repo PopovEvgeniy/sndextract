@@ -2,7 +2,7 @@
 
                     Mugen sound extractor by Popov Evgeniy Alekseyevich
 
-                             Version 2.5.9
+                             Version 2.5.9.1
 
 
 System requirements
@@ -25,7 +25,7 @@ Exit codes
 
 License
 
-This program is distributed under GNU GENERAL PUBLIC LICENSE.
+This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 
 Source code
 
@@ -43,10 +43,6 @@ Follow these steps:
 3.
 Run as root to install: make install
 Run as root to uninstall: make uninstall
-
-Contact
-
-You can send me a letter at tuzik87@inbox.ru.
 
 Version history
 
@@ -71,3 +67,4 @@ Version history
 2.5.7: The source code was recompiled under Tiny C Compiler.
 2.5.7.1: The makefile has been updated.
 2.5.8-2.5.9: The small changes.
+2.5.9.1: The documentation has been updated.
