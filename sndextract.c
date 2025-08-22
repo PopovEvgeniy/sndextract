@@ -42,9 +42,9 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.5.9");
+ puts("Version 2.6");
  puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2025 years");
- puts("This program is distributed under GNU GENERAL PUBLIC LICENSE");
+ puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
 
 void show_message(const char *message)
@@ -59,7 +59,7 @@ void show_progress(const unsigned long int start,const unsigned long int stop)
  progress=(start+1)*100;
  progress/=stop;
  putchar('\r');
- printf("Amount of the extracted files: %lu from %lu.Progress:%lu%%",start+1,stop,progress);
+ printf("Amount of the extracted files: %lu from %lu.The progress:%lu%%",start+1,stop,progress);
 }
 
 FILE *open_input_file(const char *name)
@@ -194,7 +194,7 @@ void check_signature(const char *signature)
 {
  if (strncmp(signature,"ElecbyteSnd",12)!=0)
  {
-  puts("The bad signature of a mugen sound pseudo-archive");
+  puts("The invalid format");
   exit(5);
  }
 
