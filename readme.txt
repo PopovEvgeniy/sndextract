@@ -2,7 +2,7 @@
 
                     Mugen sound extractor by Popov Evgeniy Alekseyevich
 
-                             Version 2.6.1
+                             Version 2.6.2
 
 The program description.
 
@@ -66,3 +66,4 @@ Version history.
 2.6: The small changes.
 2.6.0.1: The documentation has been updated.
 2.6.1: The extraction process has improved.
+2.6.2: The small changes.
