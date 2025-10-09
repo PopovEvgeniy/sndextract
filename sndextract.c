@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
  }
  else
  {
-  show_message("Extracting a sounds... Please wait");
+  show_message("Working...");
   work(argv[1]);
   show_message("The work has been finished");
  }
@@ -42,7 +42,7 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.6.2");
+ puts("Version 2.6.3");
  puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2025 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
