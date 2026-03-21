@@ -6,16 +6,16 @@ void show_message(const char *message);
 void show_progress(const unsigned long int start,const unsigned long int stop);
 FILE *open_input_file(const char *name);
 FILE *create_output_file(const char *name);
-void go_offset(FILE *file,const unsigned long int offset);
-unsigned long int get_file_size(FILE *file);
+void go_offset(FILE *target,const unsigned long int offset);
 char *get_memory(const size_t length);
+void check_signature(const char *signature);
+unsigned long int get_file_size(FILE *target);
 void data_dump(FILE *input,FILE *output,const size_t length);
 void fast_data_dump(FILE *input,FILE *output,const size_t length);
 void write_output_file(FILE *input,const char *name,const size_t length);
 size_t get_extension_position(const char *source);
 char *get_short_name(const char *name);
 char *get_name(const unsigned long int index,const char *short_name,const char *extension);
-void check_signature(const char *signature);
 head read_head(FILE *file);
 subhead read_subhead(FILE *file);
 void extract(FILE *input,const char *name);
@@ -42,8 +42,8 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.6.3");
- puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2025 years");
+ puts("Version 2.6.4");
+ puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
 
@@ -55,11 +55,8 @@ void show_message(const char *message)
 
 void show_progress(const unsigned long int start,const unsigned long int stop)
 {
- unsigned long int progress;
- progress=(start+1)*100;
- progress/=stop;
  putchar('\r');
- printf("Amount of the extracted files: %lu from %lu.The progress:%lu%%",start+1,stop,progress);
+ printf("Amount of the extracted files: %lu from %lu.The progress:%lu%%",start,stop,(start*100)/stop);
 }
 
 FILE *open_input_file(const char *name)
@@ -86,23 +83,14 @@ FILE *create_output_file(const char *name)
  return target;
 }
 
-void go_offset(FILE *file,const unsigned long int offset)
+void go_offset(FILE *target,const unsigned long int offset)
 {
- if (fseek(file,offset,SEEK_SET)!=0)
+ if (fseek(target,offset,SEEK_SET)!=0)
  {
   show_message("Can't jump to the target offset");
   exit(3);
  }
 
-}
-
-unsigned long int get_file_size(FILE *file)
-{
- unsigned long int length;
- fseek(file,0,SEEK_END);
- length=ftell(file);
- rewind(file);
- return length;
 }
 
 char *get_memory(const size_t length)
@@ -115,6 +103,25 @@ char *get_memory(const size_t length)
   exit(4);
  }
  return memory;
+}
+
+void check_signature(const char *signature)
+{
+ if (strncmp(signature,"ElecbyteSnd",12)!=0)
+ {
+  puts("The invalid format");
+  exit(5);
+ }
+
+}
+
+unsigned long int get_file_size(FILE *target)
+{
+ unsigned long int length;
+ fseek(target,0,SEEK_END);
+ length=ftell(target);
+ rewind(target);
+ return length;
 }
 
 void data_dump(FILE *input,FILE *output,const size_t length)
@@ -164,17 +171,18 @@ void write_output_file(FILE *input,const char *name,const size_t length)
 
 size_t get_extension_position(const char *source)
 {
- size_t index;
- for(index=strlen(source);index>0;--index)
+ size_t index,position;
+ position=strlen(source);
+ for(index=position;index>0;--index)
  {
   if(source[index]=='.')
   {
+   position=index;
    break;
   }
 
  }
- if (index==0) index=strlen(source);
- return index;
+ return position;
 }
 
 char *get_short_name(const char *name)
@@ -194,16 +202,6 @@ char *get_name(const unsigned long int index,const char *short_name,const char *
  name=get_memory(length+1);
  sprintf(name,"%s%lu%s",short_name,index,extension);
  return name;
-}
-
-void check_signature(const char *signature)
-{
- if (strncmp(signature,"ElecbyteSnd",12)!=0)
- {
-  puts("The invalid format");
-  exit(5);
- }
-
 }
 
 head read_head(FILE *file)
@@ -254,12 +252,12 @@ void work(const char *file)
  go_offset(input,snd_head.first_offset);
  for (index=0;index<snd_head.amount-1;++index)
  {
-  show_progress(index,snd_head.amount);
+  show_progress(index+1,snd_head.amount);
   wave_name=get_name(index+1,short_name,".wav");
   extract(input,wave_name);
   free(wave_name);
  }
- show_progress(index,snd_head.amount);
+ show_progress(index+1,snd_head.amount);
  wave_name=get_name(index+1,short_name,".wav");
  extract_last(input,wave_name,snd_size);
  free(wave_name);
