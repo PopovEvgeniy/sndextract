@@ -2,7 +2,7 @@
 
                     Mugen sound extractor by Popov Evgeniy Alekseyevich
 
-                             Version 2.6.6
+                             Version 2.6.7
 
 The program description.
 
@@ -14,9 +14,11 @@ Exit codes.
 0: The operation was successfully completed.
 1: Can't open the input file.
 2: Can't create the output file.
-3: Can't jump to the target offset.
-4: Can't allocate memory.
-5: The invalid format.
+3: Can't read data!
+4: Can't write data!
+5: Can't jump to the target offset.
+6: Can't allocate memory.
+7: The invalid format.
 
 License.
 
@@ -67,3 +69,4 @@ Version history.
 2.6.0.1: The documentation has been updated.
 2.6.1: The extraction process has improved.
 2.6.2-2.6.6: The small changes.
+2.6.7: The file processing has improved.
