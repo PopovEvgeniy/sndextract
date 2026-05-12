@@ -44,7 +44,7 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.6.7");
+ puts("Version 2.6.8");
  puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
@@ -90,8 +90,7 @@ void read_data(void *data,const size_t length,FILE *input)
  fread(data,length,sizeof(char),input);
  if (ferror(input)!=0)
  {
-  putchar('\n');
-  puts("Can't read data!");
+  show_message("Can't read data!");
   exit(3);
  }
 
@@ -102,8 +101,7 @@ void write_data(const void *data,const size_t length,FILE *output)
  fwrite(data,length,sizeof(char),output);
  if (ferror(output)!=0)
  {
-  putchar('\n');
-  puts("Can't write data!");
+  show_message("Can't write data!");
   exit(4);
  }
 
