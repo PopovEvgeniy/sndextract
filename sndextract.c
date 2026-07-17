@@ -15,9 +15,9 @@ unsigned long int get_file_size(FILE *target);
 void data_dump(FILE *input,FILE *output,const size_t length);
 void fast_data_dump(FILE *input,FILE *output,const size_t length);
 void write_output_file(FILE *input,const char *name,const size_t length);
-size_t get_extension_position(const char *source);
-char *get_short_name(const char *name);
-char *get_name(const unsigned long int index,const char *short_name,const char *extension);
+size_t get_name_without_extension_length(const char *source);
+char *get_name_without_extension(const char *name);
+char *get_name(const unsigned long int index,const char *name_without_extension,const char *extension);
 head read_head(FILE *target);
 subhead read_subhead(FILE *target);
 void extract(FILE *input,const char *name);
@@ -44,7 +44,7 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.6.8");
+ puts("Version 2.6.9");
  puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
@@ -193,38 +193,73 @@ void write_output_file(FILE *input,const char *name,const size_t length)
  fclose(output);
 }
 
-size_t get_extension_position(const char *source)
+size_t get_name_without_extension_length(const char *source)
 {
- size_t index,position;
- position=strlen(source);
- for(index=position;index>0;--index)
+ size_t length=0;
+ size_t index;
+ if (source!=NULL)
  {
-  if(source[index]=='.')
+  length=strlen(source);
+ }
+ if (length>=1)
+ {
+  if (source[length-1]=='.')
   {
-   position=index;
+   --length;
+  }
+
+ }
+ if (length>0)
+ {
+  if (source[length-1]==DIRECTORY_SEPARATOR)
+  {
+   length=0;
+  }
+
+ }
+ for (index=length;index>0;--index)
+ {
+  if (source[index-1]==DIRECTORY_SEPARATOR)
+  {
+   break;
+  }
+  if (source[index-1]=='.')
+  {
+   length=index-1;
    break;
   }
 
  }
- return position;
+ return length;
 }
 
-char *get_short_name(const char *name)
+char *get_name_without_extension(const char *name)
 {
- size_t length;
  char *result=NULL;
- length=get_extension_position(name);
- result=get_memory(length+1);
- return strncpy(result,name,length);
+ size_t length;
+ length=get_name_without_extension_length(name);
+ if (length>0)
+ {
+  result=get_memory(length+1);
+  strncpy(result,name,length);
+ }
+ return result;
 }
 
-char *get_name(const unsigned long int index,const char *short_name,const char *extension)
+char *get_name(const unsigned long int index,const char *name_without_extension,const char *extension)
 {
  char *name=NULL;
  size_t length;
- length=strlen(short_name)+strlen(extension)+12;
- name=get_memory(length+1);
- sprintf(name,"%s%lu%s",short_name,index,extension);
+ if (name_without_extension!=NULL)
+ {
+  if (extension!=NULL)
+  {
+   length=strlen(name_without_extension)+strlen(extension)+12;
+   name=get_memory(length+1);
+   sprintf(name,"%s%lu%s",name_without_extension,index,extension);
+  }
+
+ }
  return name;
 }
 
@@ -268,8 +303,8 @@ void work(const char *file)
  head snd_head;
  unsigned long int index,snd_size;
  char *wave_name=NULL;
- char *short_name=NULL;
- short_name=get_short_name(file);
+ char *name_without_extension=NULL;
+ name_without_extension=get_name_without_extension(file);
  input=open_input_file(file);
  snd_size=get_file_size(input);
  snd_head=read_head(input);
@@ -277,14 +312,14 @@ void work(const char *file)
  for (index=0;index<snd_head.amount-1;++index)
  {
   show_progress(index+1,snd_head.amount);
-  wave_name=get_name(index+1,short_name,".wav");
+  wave_name=get_name(index+1,name_without_extension,".wav");
   extract(input,wave_name);
   free(wave_name);
  }
  show_progress(index+1,snd_head.amount);
- wave_name=get_name(index+1,short_name,".wav");
+ wave_name=get_name(index+1,name_without_extension,".wav");
  extract_last(input,wave_name,snd_size);
  free(wave_name);
- free(short_name);
+ free(name_without_extension);
  fclose(input);
 }

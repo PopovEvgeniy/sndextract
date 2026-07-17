@@ -2,6 +2,12 @@
   #pragma warning(disable : 4996)
 #endif
 
+#ifdef _WIN32
+#define DIRECTORY_SEPARATOR '\\'
+#else
+#define DIRECTORY_SEPARATOR '/'
+#endif
+
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
