@@ -10,7 +10,7 @@ typedef struct
 typedef struct
 {
  unsigned int next_offset;
- unsigned int legth;
+ unsigned int length;
  unsigned int group;
  unsigned int sample;
 } subhead;
