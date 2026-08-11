@@ -2,7 +2,7 @@
 
                     Mugen sound extractor by Popov Evgeniy Alekseyevich
 
-                             Version 2.7.2
+                             Version 2.7.3
 
 The program description.
 
@@ -20,6 +20,7 @@ Exit codes.
 6: Can't allocate memory.
 7: The invalid format.
 8: Can't get the file size!
+9: You don't give a target file name. 
 
 License.
 
@@ -74,3 +75,4 @@ Version history.
 2.6.8: The small changes.
 2.6.9-2.7: A small bug has been fixed.
 2.7.1-2.7.2: The small changes.
+2.7.3: The file processing has improved.
