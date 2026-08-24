@@ -47,7 +47,7 @@ void show_intro()
 {
  putchar('\n');
  puts("SND EXTRACT");
- puts("Version 2.7.3");
+ puts("Version 2.7.4");
  puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
@@ -74,12 +74,10 @@ void show_progress(const unsigned long int start,const unsigned long int stop)
 FILE *open_input_file(const char *name)
 {
  FILE *target=NULL;
- if (name==NULL)
+ if (name!=NULL)
  {
-  show_error("Can't open the input file");
-  exit(OPEN_FILE_ERROR);
+  target=fopen(name,"rb");
  }
- target=fopen(name,"rb");
  if (target==NULL)
  {
   show_error("Can't open the input file");
@@ -91,15 +89,13 @@ FILE *open_input_file(const char *name)
 FILE *create_output_file(const char *name)
 {
  FILE *target=NULL;
- if (name==NULL)
+ if (name!=NULL)
  {
-  show_error("Can't create the ouput file");
-  exit(CREATE_FILE_ERROR);
+  target=fopen(name,"wb");
  }
- target=fopen(name,"wb");
  if (target==NULL)
  {
-  show_error("Can't create the ouput file");
+  show_error("Can't create the output file");
   exit(CREATE_FILE_ERROR);
  }
  return target;
