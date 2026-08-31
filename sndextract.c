@@ -46,8 +46,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("SND EXTRACT");
- puts("Version 2.7.4");
+ puts("SND EXTRACT 2.7.5");
  puts("Mugen sound extractor by Popov Evgeniy Alekseyevich, 2008-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
 }
@@ -135,9 +134,9 @@ char *get_memory(const size_t length)
 {
  char *memory=NULL;
  memory=(char*)calloc(length,sizeof(char));
- if(memory==NULL)
+ if (memory==NULL)
  {
-  puts("Can't allocate memory");
+  show_error("Can't allocate memory");
   exit(MEMORY_ALLOCATION_ERROR);
  }
  return memory;
@@ -147,7 +146,7 @@ void check_signature(const char *signature)
 {
  if (strncmp(signature,"ElecbyteSnd",12)!=0)
  {
-  puts("The invalid format");
+  show_error("The invalid format");
   exit(INVALID_FORMAT_ERROR);
  }
 
